@@ -1,7 +1,7 @@
 # `hns` — *H*uman *N*umeric *S*ort v0.1.0 (⯭2022-09-20)
 
-© 2022 Fredrick R. Brennan and `hns` Authors
-Apache 2.0 licensed, see LICENSE.
+* © 2022 Fredrick R. Brennan and `hns` Authors
+    * Apache 2.0 licensed, see LICENSE.
 
 ## Commercial
 
