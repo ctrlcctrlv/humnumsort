@@ -1,0 +1,27 @@
+[package]
+name = "humnumsort"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/ctrlcctrlv/humnumsort"
+license = "Apache-2.0"
+categories = ["command-line-utilities", "text-processing", "algorithms"]
+authors = ["Fredrick Brennan <copypaste@kittens.ph>", "`humnumsort` Project Authors"]
+keywords = ["sorting", "coreutils", "numeric-sorting", "human-numeric-sort", "stdin", "stdout"]
+
+[lib]
+name = "humnum"
+path = "src/lib.rs"
+
+[[bin]]
+name = "hns"
+path = "src/main.rs"
+
+[dependencies]
+derive_more = "0.99"
+env_logger = "0.9"
+atoi = "1.0"
+log = "0.4"
+
+[profile.release]
+lto = "fat"
+strip = "debuginfo"
