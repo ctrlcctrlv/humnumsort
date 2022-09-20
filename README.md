@@ -176,6 +176,16 @@ sys     0m1.548s
 
 Sixteen million lines with four comparison points each sorted in under thirty seconds! And that's a Freddy Mays guarantee.
 
+## Benchmarking data
+
+* See [`humnumsort-test-data` repository](https://github.com/ctrlcctrlv/humnumsort-test-data/).
+
+    You may want to pull it as:
+
+    ```bash
+    $ git pull https://github.com/ctrlcctrlv/humnumsort-test-data/ tests/data/expensive
+    ```
+
 ## TODO
 
 * Hexadecimal support.
