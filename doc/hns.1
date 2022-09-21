@@ -1,0 +1,72 @@
+.\" generated with Ronn-NG/v0.9.1
+.\" http://github.com/apjanke/ronn-ng/tree/0.9.1
+.TH "HNS" "1" "September 2022" ""
+.SH "NAME"
+\fBhns\fR \- human numeric sort
+.SH "SYNOPSIS"
+hns < input > output
+.P
+hns < <(…) > output
+.P
+… | hns > output
+.SH "DESCRIPTION"
+A "human numeric" sorting program \(em does what \fBsort \-h\fR is supposed to do!
+.P
+(That is to say, it does what you likely already thought or may've assumed GNU/BSD \fBsort \-h\fR does\.)
+.SH "OPTIONS"
+.nf
+\-h, \-\-help
+        Print help information
+
+\-V, \-\-version
+        Print version information
+.fi
+.SH "EXAMPLES"
+\fBfind \. | hns\fR
+.P
+        Numerically sort the names of the files in the current directory\.
+.P
+\fBhns < <(dig peeweeharms\.hk)\fR
+.P
+        Numerically sort the IP addresses in the output of \fBdig\fR\.
+.SH "LONG EXAMPLE"
+.SS "1"
+\fBseq 0 1000\fR
+.P
+\fB|\fR
+.P
+\fBxargs \-I{} bash \-c "echo {{}} > {}"\fR
+.SS "2"
+\fBseq 0 1000\fR
+.P
+\fB|\fR
+.P
+\fBawk '{printf "mv %s topsecret_%s\.json\en", $0, $0}'\fR
+.P
+\fB|\fR
+.SS "3"
+\fBparallel\fR
+.SS "4"
+\fBpaste <(seq 0 1000) <(hns < <(echo topsecret_[[:digit:]]*\.json))\fR
+.P
+\fB|\fR
+.P
+\fBawk '{mv %s topsecret_%04d\.json\en", $2, $1}' | parallel\fR
+.P
+Use as part of a pipeline to fix accidentally unzeropadded numbers :\-)
+.P
+↓
+.TP
+\fB1\fR
+write some top secret JSON\-format files as 0\.\.=1000
+.TP
+\fB2\fR
+move them to \.json file extensions
+.TP
+\fB3\fR
+oops! forgot to zeropad!! managing these files will suck now :\-(
+.TP
+\fB4\fR
+luckily we have \fBhns\fR!
+.SH "AUTHORS"
+Fredrick Brennan \fIcopypaste@kittens\.ph\fR, \fBhumnumsort\fR Project Authors
