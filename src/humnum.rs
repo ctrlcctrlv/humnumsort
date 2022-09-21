@@ -1,4 +1,4 @@
-use atoi::FromRadix10Signed;
+use atoi::{FromRadix10, FromRadix10Signed};
 #[cfg(debug_assertions)]
 use log::debug;
 
@@ -7,8 +7,13 @@ use std::cmp::{Ordering, PartialOrd};
 use std::fmt::{Debug, Display, Error as FmtError, Formatter};
 use std::str::{from_utf8, from_utf8_unchecked};
 
-#[derive(Constructor, From, Deref, AsRef, AsMut, Copy, Clone)]
-pub struct HumanNumericLine<'a>(pub &'a [u8]);
+use crate::args::Mode;
+
+#[derive(Constructor, Copy, Clone)]
+pub struct HumanNumericLine<'a>{
+    pub buf: &'a [u8],
+    pub mode: Mode
+}
 
 impl Debug for HumanNumericLine<'_> {
     fn fmt(&self, fmt: &mut Formatter<'_>) -> Result<(), FmtError> {
@@ -16,7 +21,7 @@ impl Debug for HumanNumericLine<'_> {
         write!(
             fmt,
             "HumNumLine({})",
-            from_utf8(self.0)
+            from_utf8(self.buf)
                 .map(|s| {
                     bind = format!(r#""{}""#, &s[..s.len() - 1]);
                     bind.as_str()
@@ -28,19 +33,19 @@ impl Debug for HumanNumericLine<'_> {
 
 impl Display for HumanNumericLine<'_> {
     fn fmt(&self, fmt: &mut Formatter<'_>) -> Result<(), FmtError> {
-        unsafe { write!(fmt, "{}", from_utf8_unchecked(self.0)) }
+        unsafe { write!(fmt, "{}", from_utf8_unchecked(self.buf)) }
     }
 }
 
 impl std::convert::AsRef<[u8]> for HumanNumericLine<'_> {
     fn as_ref(&self) -> &[u8] {
-        &self.0
+        &self.buf
     }
 }
 
 impl PartialEq<dyn AsRef<[u8]>> for HumanNumericLine<'_> {
     fn eq(&self, other: &dyn AsRef<[u8]>) -> bool {
-        self.eq(&HumanNumericLine(other.as_ref()))
+        self.eq(&HumanNumericLine::new(other.as_ref(), self.mode))
     }
 }
 
@@ -48,8 +53,8 @@ impl HumanNumericLine<'_> {
     // Note: my implementation is recursive!
     fn humnum_compare(&self, other: &Self) -> Ordering {
         // A buffer is left string in comparison, B buffer is right.
-        let a = self.0;
-        let b = other.0;
+        let a = self.buf;
+        let b = other.buf;
 
         // First, we generate a Non EQual Index
         let neqi = {
@@ -96,14 +101,14 @@ impl HumanNumericLine<'_> {
                 return cmp;
             } else {
                 // ...recurse if matched intermediary bytestrings are equal.
-                return HumanNumericLine(&a[axfin + 1..a.len()])
-                    .humnum_compare(&HumanNumericLine(&b[bxfin + 1..b.len()]));
+                return HumanNumericLine::new(&a[axfin + 1..a.len()], self.mode)
+                    .humnum_compare(&HumanNumericLine::new(&b[bxfin + 1..b.len()], self.mode));
             }
         }
 
         // This makes the below parse unwrap safe by discarding final \n
         let subrange = |buf: &[u8], mut beg: usize, fin: usize| {
-            if beg != 0 && buf[beg-1] == '-' as u8 {
+            if self.mode.is_default() && beg >= 1 && buf[beg-1] == '-' as u8 {
                 beg -= 1;
             }
             if fin != buf.len() - 1 {
@@ -120,22 +125,31 @@ impl HumanNumericLine<'_> {
         debug!("{:?}", (an, anbeg, anfin, bn, bnbeg, bnfin));
 
         // Finally, do a normal comparison on the numbers.
-        let ai: u64 = FromRadix10Signed::from_radix_10_signed(an).0;
-        let bi: u64 = FromRadix10Signed::from_radix_10_signed(bn).0;
+        let (ai, bi): (i64, i64) = if self.mode.is_default() {
+            (
+                FromRadix10Signed::from_radix_10_signed(an).0,
+                FromRadix10Signed::from_radix_10_signed(bn).0
+            )
+        } else {
+            (
+                FromRadix10::from_radix_10(an).0,
+                FromRadix10::from_radix_10(bn).0
+            )
+        };
 
         let cmp = ai.cmp(&bi);
         if cmp != Ordering::Equal {
             cmp
         } else {
             // Recurse on rest of line if numbers equal.
-            HumanNumericLine(&a[anfin + 1..]).humnum_compare(&HumanNumericLine(&b[bnfin + 1..]))
+            HumanNumericLine::new(&a[anfin + 1..], self.mode).humnum_compare(&HumanNumericLine::new(&b[bnfin + 1..], self.mode))
         }
     }
 }
 
 impl PartialOrd<dyn AsRef<[u8]>> for HumanNumericLine<'_> {
     fn partial_cmp(&self, other: &dyn AsRef<[u8]>) -> Option<Ordering> {
-        Some(self.humnum_compare(&HumanNumericLine(other.as_ref())))
+        Some(self.humnum_compare(&HumanNumericLine::new(other.as_ref(), self.mode)))
     }
 }
 

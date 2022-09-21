@@ -2,6 +2,8 @@
 name = "humnumsort"
 version = "0.1.0"
 edition = "2021"
+readme = "README.md"
+description = "Human numeric sorting program — does what `sort -h` is supposed to do!"
 repository = "https://github.com/ctrlcctrlv/humnumsort"
 license = "Apache-2.0"
 categories = ["command-line-utilities", "text-processing", "algorithms"]
@@ -21,6 +23,8 @@ derive_more = "0.99"
 env_logger = "0.9"
 atoi = "1.0"
 log = "0.4"
+clap = { version = "3.2", default-features = false, features = ["std", "derive", "wrap_help", "color"] }
+const_format = "0.2"
 
 [profile.release]
 lto = "fat"
