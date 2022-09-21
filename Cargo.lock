@@ -95,6 +95,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "clap_mangen"
+version = "0.1.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "105180c05a72388d5f5e4e4f6c79eecb92497bda749fa8f963a16647c5d5377f"
+dependencies = [
+ "clap",
+ "roff",
+]
+
+[[package]]
 name = "const_format"
 version = "0.2.26"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -195,7 +205,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9a3a5bfb195931eeb336b2a7b4d761daec841b97f947d34394601737a7bba5e4"
 
 [[package]]
-name = "humnumsort"
+name = "humnum"
 version = "0.1.0"
 dependencies = [
  "atoi",
@@ -203,6 +213,15 @@ dependencies = [
  "const_format",
  "derive_more",
  "env_logger",
+ "log",
+]
+
+[[package]]
+name = "humnumsort"
+version = "0.1.0"
+dependencies = [
+ "env_logger",
+ "humnum",
  "log",
 ]
 
@@ -328,6 +347,12 @@ name = "regex-syntax"
 version = "0.6.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a3f87b73ce11b1619a3c6332f45341e0047173771e8b8b73f87bfeefb7b56244"
+
+[[package]]
+name = "roff"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b833d8d034ea094b1ea68aa6d5c740e0d04bad9d16568d08ba6f76823a114316"
 
 [[package]]
 name = "rustc_version"
@@ -488,3 +513,12 @@ name = "windows_x86_64_msvc"
 version = "0.36.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c811ca4a8c853ef420abd8592ba53ddbbac90410fab6903b3e79972a631f7680"
+
+[[package]]
+name = "xtask_mangen"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "clap_mangen",
+ "humnum",
+]

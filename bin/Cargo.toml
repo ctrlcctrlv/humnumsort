@@ -1,0 +1,24 @@
+[package]
+name = "humnumsort"
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+description = "Human numeric sorting program — does what `sort -h` is supposed to do!"
+repository = "https://github.com/ctrlcctrlv/humnumsort"
+license = "Apache-2.0"
+categories = ["command-line-utilities", "text-processing", "algorithms"]
+authors = ["Fredrick Brennan <copypaste@kittens.ph>", "`humnumsort` Project Authors"]
+keywords = ["sorting", "coreutils", "numeric-sorting", "human-numeric-sort", "stdin", "stdout"]
+
+[dependencies]
+log = "0.4"
+env_logger = "0.9"
+humnum = {path = "../lib"}
+
+[package.metadata.deb]
+assets = [
+    ["target/release/hns", "usr/bin/hns", "755"],
+    ["target/release/hns+", "usr/bin/hns+", "755"],
+]
+preserve-symlinks = true
+section = "Utilities"

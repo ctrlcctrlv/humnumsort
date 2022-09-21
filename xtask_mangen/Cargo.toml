@@ -1,0 +1,11 @@
+[package]
+name = "xtask_mangen"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "3.2", default-features = false, features = ["std", "derive", "wrap_help", "color"] }
+clap_mangen = "0.1"
+humnum = { path = "../lib" }
