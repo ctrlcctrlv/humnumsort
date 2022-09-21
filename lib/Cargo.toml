@@ -21,3 +21,6 @@ atoi = "1.0"
 log = "0.4"
 clap = { version = "3.2", default-features = false, features = ["std", "derive", "wrap_help", "color"] }
 const_format = "0.2"
+
+[features]
+force_color = []

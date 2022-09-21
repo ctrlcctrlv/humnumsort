@@ -3,6 +3,7 @@ use const_format::formatcp;
 
 #[derive(Debug, Clone, Copy, Parser, Default)]
 #[clap(multicall(true), disable_help_subcommand(true), max_term_width(80))]
+#[cfg_attr(feature = "force_color", clap(color(clap::ColorChoice::Always)))]
 pub struct Options {
     #[clap(subcommand)]
     pub mode: Mode,

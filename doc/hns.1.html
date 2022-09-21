@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body style="color:white; background-color:black">
+<pre>
+<span style="color:lime;">hns</span> 0.1.0
+Fredrick Brennan &lt;copypaste@kittens.ph&gt;, `humnumsort` Project Authors
+
+A &quot;human numeric&quot; sorting program — does what `sort -h` is supposed to do!
+
+(That is to say, it does what you likely already thought or may've assumed
+GNU/BSD `sort -h` does.)
+
+<span style="color:yellow;">USAGE:</span>
+    hns &lt; input &gt; output
+    hns &lt; &lt;(…) &gt; output
+    … | hns &gt; output
+
+<span style="color:yellow;">OPTIONS:
+</span>    <span style="color:lime;">-h</span>, <span style="color:lime;">--help</span>
+            Print help information
+
+    <span style="color:lime;">-V</span>, <span style="color:lime;">--version</span>
+            Print version information
+
+<span style="color:yellow;">EXAMPLES</span><span style="color:yellow;">:
+</span>    <span style="color:lime;">find . | hns</span>
+            Numerically sort the names of the files in the current directory.
+    <span style="color:lime;">hns &lt; &lt;(dig peeweeharms.hk)</span>
+            Numerically sort the IP addresses in the output of `dig`.
+    <span style="color:lime;"># ①
+    seq 0 1000
+        |
+    xargs -I{} bash -c &quot;echo {{}} &gt; {}&quot;
+    
+    # ②
+    seq 0 1000
+        |
+    awk '{printf &quot;mv %s topsecret_%s.json\n&quot;, $0, $0}'
+        |
+    
+    # ③
+    parallel
+    
+    # ④
+    paste &lt;(seq 0 1000) &lt;(hns &lt; &lt;(echo topsecret_[[:digit:]]*.json))
+        |
+    awk '{mv %s topsecret_%04d.json\n&quot;, $2, $1}' | parallel</span>
+            Use as part of a pipeline to fix accidentally unzeropadded numbers
+            :-)
+            ↓
+            ① write some top secret JSON-format files as 0..=1000
+            ② move them to .json file extensions
+            ③ oops! forgot to zeropad!! managing these files will suck now :-(
+            ④ luckily we have `hns`!
+
+
+</pre>
+</body>
+</html>

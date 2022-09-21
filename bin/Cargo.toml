@@ -19,6 +19,10 @@ humnum = {path = "../lib"}
 assets = [
     ["target/release/hns", "usr/bin/hns", "755"],
     ["target/release/hns+", "usr/bin/hns+", "755"],
+    ["README.md", "usr/share/doc/hns/readme", "644"]
 ]
 preserve-symlinks = true
 section = "Utilities"
+
+[features]
+force_color = ["humnum/force_color"]
