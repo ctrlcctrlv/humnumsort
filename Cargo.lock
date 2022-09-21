@@ -199,6 +199,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "hns"
+version = "0.1.0"
+dependencies = [
+ "env_logger",
+ "humnum",
+ "log",
+]
+
+[[package]]
 name = "humantime"
 version = "2.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -213,15 +222,6 @@ dependencies = [
  "const_format",
  "derive_more",
  "env_logger",
- "log",
-]
-
-[[package]]
-name = "humnumsort"
-version = "0.1.0"
-dependencies = [
- "env_logger",
- "humnum",
  "log",
 ]
 

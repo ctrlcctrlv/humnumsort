@@ -5,6 +5,8 @@ members = [
     "xtask_mangen"
 ]
 
+default-members = ["bin"]
+
 [profile.release]
 lto = "fat"
 strip = "debuginfo"
