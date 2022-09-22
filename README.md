@@ -1,7 +1,13 @@
 # `hns` — *H*uman *N*umeric *S*ort v0.1.0 (⯭2022-09-20)
 
 * © 2022 Fredrick R. Brennan and `hns` Authors
-    * Apache 2.0 licensed, see LICENSE.
+    * Apache 2.0 licensed, see LICENSE.  
+* [**`man` page**](http://copypaste.wtf/humnumsort/doc/hns.1.html)
+
+## Packages
+
+* [`hns_0.1.0_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.1.0/hns_0.1.0_amd64.deb)
+* [`humnumsort.PKGBUILD` (for Arch Linux)](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=humnumsort)
 
 ## Commercial
 
