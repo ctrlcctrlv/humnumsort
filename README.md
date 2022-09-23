@@ -6,7 +6,7 @@
 
 ## Packages
 
-* [`hns_0.1.0_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.1.0/hns_0.1.0_amd64.deb)
+* [`hns_0.1.1_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.1.1/hns_0.1.1_amd64.deb)
 * [`humnumsort.PKGBUILD` (for Arch Linux)](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=humnumsort)
 
 ## Commercial
