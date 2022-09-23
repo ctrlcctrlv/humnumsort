@@ -194,9 +194,7 @@ Sixteen million lines with four comparison points each sorted in under thirty se
 
 ## TODO
 
-* Hexadecimal support.
 * Zero-padding via another binary?
-* Make it possible to disable the negative numbers support (it's slightly faster?)
 
 ## License
 

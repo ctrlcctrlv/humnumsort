@@ -1,5 +1,4 @@
 use clap;
-use clap::{IntoApp, Parser};
 use humnum;
 
 fn main() -> std::io::Result<()> {

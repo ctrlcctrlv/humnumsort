@@ -25,6 +25,7 @@ impl Options {
 
 const HNS: &str = "hns";
 const HNS_NN: &str = formatcp!("{}+", HNS);
+const HXS: &str = "hxs";
 const ABOUT: &str = "``Human numerically'' sorts.";
 const LONG_ABOUT: &str = "\nA \"human numeric\" sorting program — does what `sort -h` is supposed to do!
 
@@ -44,8 +45,14 @@ macro_rules! about_nn {
         formatcp!("{} (no negatives)", $arg)
     };
 }
+macro_rules! about_x {
+    ($arg:expr) => {
+        formatcp!("{} (hexadecimal)", $arg)
+    };
+}
 const USAGE_HNS: &str = usage!(HNS);
 const USAGE_HNSNN: &str = usage!(HNS_NN);
+const USAGE_HXS: &str = usage!(HXS);
 
 #[derive(Copy, Clone, Debug, Parser, PartialEq, Eq, derive_more::IsVariant)]
 #[clap(author, version)]
@@ -64,6 +71,25 @@ pub enum Mode {
     #[clap(name = HNS_NN, bin_name = HNS_NN)]
     #[clap(override_usage(USAGE_HNSNN))]
     NoNegatives(hnsnn::ExampleContainer),
+    #[clap(author, version, about = about_x!(ABOUT), after_long_help = "\n", long_about = LONG_ABOUT)]
+    #[clap(name = HXS, bin_name = HXS)]
+    #[clap(override_usage(USAGE_HXS))]
+    Hexadecimal(hxs::ExampleContainer),
+}
+
+impl Mode {
+    pub fn consider_hex(&self) -> bool {
+        match self {
+            Mode::Hexadecimal(_) => true,
+            _ => false
+        }
+    }
+    pub fn sort_negatives(&self) -> bool {
+        match self {
+            Mode::Default(_) | Mode::Hexadecimal(_) => true,
+            _ => false
+        }
+    }
 }
 
 impl Default for Mode {
@@ -127,3 +153,4 @@ macro_rules! examples {
 
 examples!(hns, HNS);
 examples!(hnsnn, HNS_NN);
+examples!(hxs, HXS);

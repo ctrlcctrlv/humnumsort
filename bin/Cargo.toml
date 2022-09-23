@@ -1,6 +1,6 @@
 [package]
 name = "hns"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 readme = "README.md"
 description = "Human numeric sorting program — does what `sort -h` is supposed to do!"
@@ -18,8 +18,11 @@ humnum = {path = "../lib"}
 [package.metadata.deb]
 assets = [
     ["target/release/hns", "usr/bin/hns", "755"],
-    ["target/release/hns+", "usr/bin/hns+", "755"],
-    ["README.md", "usr/share/doc/hns/readme", "644"]
+    ["target/release/hns", "usr/bin/hns+", "755"],
+    ["target/release/hns", "usr/bin/hxs", "755"],
+    ["../doc/hns.1.gz", "usr/share/man/man1/hns.1.gz", "644"],
+    ["../README.md", "usr/share/doc/hns/readme", "644"],
+    ["../doc/hns.1.html", "usr/share/doc/hns/manpage.html", "644"]
 ]
 preserve-symlinks = true
 section = "Utilities"
