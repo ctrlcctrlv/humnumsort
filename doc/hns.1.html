@@ -1,134 +1,246 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Fri Sep 23 01:08:59 2022 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>hns.1</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        background-color: #232629;
-        color: #7a7c7d;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #7a7c7d;  padding-left: 4px; }
-    div.sourceCode
-      { color: #cfcfc2; background-color: #232629; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #cfcfc2; } /* Normal */
-    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
-    code span.an { color: #3f8058; } /* Annotation */
-    code span.at { color: #2980b9; } /* Attribute */
-    code span.bn { color: #f67400; } /* BaseN */
-    code span.bu { color: #7f8c8d; } /* BuiltIn */
-    code span.cf { color: #fdbc4b; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #3daee9; } /* Char */
-    code span.cn { color: #27aeae; font-weight: bold; } /* Constant */
-    code span.co { color: #7a7c7d; } /* Comment */
-    code span.cv { color: #7f8c8d; } /* CommentVar */
-    code span.do { color: #a43340; } /* Documentation */
-    code span.dt { color: #2980b9; } /* DataType */
-    code span.dv { color: #f67400; } /* DecVal */
-    code span.er { color: #da4453; text-decoration: underline; } /* Error */
-    code span.ex { color: #0099ff; font-weight: bold; } /* Extension */
-    code span.fl { color: #f67400; } /* Float */
-    code span.fu { color: #8e44ad; } /* Function */
-    code span.im { color: #27ae60; } /* Import */
-    code span.in { color: #c45b00; } /* Information */
-    code span.kw { color: #cfcfc2; font-weight: bold; } /* Keyword */
-    code span.op { color: #cfcfc2; } /* Operator */
-    code span.ot { color: #27ae60; } /* Other */
-    code span.pp { color: #27ae60; } /* Preprocessor */
-    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
-    code span.sc { color: #3daee9; } /* SpecialChar */
-    code span.ss { color: #da4453; } /* SpecialString */
-    code span.st { color: #f44f4f; } /* String */
-    code span.va { color: #27aeae; } /* Variable */
-    code span.vs { color: #da4453; } /* VerbatimString */
-    code span.wa { color: #da4453; } /* Warning */
-  </style>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>HNS</title>
+
 </head>
 <body>
-<h1 id="hns1----human-numeric-sort">hns(1) -- human numeric sort</h1>
-<h2 id="synopsis">SYNOPSIS</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">hns</span> <span class="op">&lt;</span> input <span class="op">&gt;</span> output</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">hns</span> <span class="op">&lt;</span> <span class="op">&lt;(</span>…<span class="op">)</span> <span class="op">&gt;</span> output</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>… <span class="kw">|</span> <span class="ex">hns</span> <span class="op">&gt;</span> output</span></code></pre></div>
-<h2 id="authors">AUTHORS</h2>
-<p>Fredrick Brennan &lt;<a href="mailto:copypaste@kittens.ph">copypaste@kittens.ph</a>&gt;, <code>humnumsort</code> Project Authors</p>
-<h2 id="description">DESCRIPTION</h2>
-<p>A &quot;human numeric&quot; sorting program — does what <code>sort -h</code> is supposed to do!</p>
-<p>(That is to say, it does what you likely already thought or may&#39;ve assumed GNU/BSD <code>sort -h</code> does.)</p>
-<h2 id="options">OPTIONS</h2>
-<pre><code>-h, --help
-        Print help information
 
--V, --version
-        Print version information
-</code></pre>
-<h2 id="examples">EXAMPLES</h2>
-<ul>
-<li><div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">find</span> . <span class="kw">|</span> <span class="ex">hns</span></span></code></pre></div>
-<p>Numerically sort the names of the files in the current directory.</p></li>
-<li><div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">hns</span> <span class="op">&lt;</span> <span class="op">&lt;(</span><span class="ex">dig</span> peeweeharms.hk<span class="op">)</span></span></code></pre></div>
-<p>Numerically sort the IP addresses in the output of <code>dig</code>.</p></li>
-</ul>
-<h2 id="long-example">LONG EXAMPLE</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="co"># ①</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="fu">seq</span> 0 1000</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    <span class="kw">|</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="fu">xargs</span> -I{} <span class="fu">bash</span> -c <span class="st">&quot;echo {{}} &gt; {}&quot;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co"># ②</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="fu">seq</span> 0 1000</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>    <span class="kw">|</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="co"># ③</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="fu">awk</span> <span class="st">&#39;{printf &quot;mv %s topsecret_%s.json\n&quot;, $0, $0}&#39;</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>    <span class="kw">|</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="ex">parallel</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a><span class="co"># ④</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a><span class="ex">paste</span> <span class="op">&lt;(</span><span class="fu">seq</span> 0 1000<span class="op">)</span> <span class="op">&lt;(</span><span class="ex">hns</span> <span class="op">&lt;</span> <span class="op">&lt;(</span><span class="bu">echo</span> topsecret_[[:digit:]]*.json<span class="op">))</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>    <span class="kw">|</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a><span class="fu">awk</span> <span class="st">&#39;{mv %s topsecret_%04d.json\n&quot;, $2, $1}&#39;</span> <span class="kw">|</span> <span class="ex">parallel</span></span></code></pre></div>
-<p>Use as part of a pipeline to fix accidentally unzeropadded numbers 😄</p>
-<ul>
-<li>① write some top secret JSON-format files as <code>0..=1000</code></li>
-<li>② move them to .json file extensions</li>
-<li>③ oops! forgot to zeropad!! managing these files will suck now 🙁</li>
-<li>④ luckily we have <code>hns</code>!</li>
-</ul>
+<h1 align="center">HNS</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#LONG EXAMPLE">LONG EXAMPLE</a><br>
+<a href="#SYMLINKS">SYMLINKS</a><br>
+<a href="#REPOSITORY">REPOSITORY</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>hns</b> -
+human numeric sort</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="12%"></td>
+<td width="37%">
+
+
+<p style="margin-top: 1em">hns <b>&lt; input</b> [<b>&gt;
+output</b>]</p> </td>
+<td width="51%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="12%"></td>
+<td width="37%">
+
+
+<p>hns <b>&lt; &lt;(...)</b> [<b>&gt; output</b>]</p></td>
+<td width="51%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="12%"></td>
+<td width="37%">
+
+
+<p>... | hns [<b>&gt; output</b>]</p></td>
+<td width="51%">
+</td></tr>
+</table>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
+<br>
+The name of the command varies &mdash; there are also
+<b>hns+</b> and <b>hxs</b>. See SYMLINKS.</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">A &quot;human
+numeric&quot; sorting program &mdash; does what <b>sort
+-h</b> is supposed to do!</p>
+
+<p style="margin-left:11%; margin-top: 1em">(That is to
+say, it does what you likely already thought or may&rsquo;ve
+assumed GNU/BSD <b>sort -h</b> does.)</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">-h, --help <br>
+Print help information</p>
+
+<p style="margin-left:11%; margin-top: 1em">-V, --version
+<br>
+Print version information</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>find . |
+hns</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Numerically
+sort the names of the files in the current directory.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>hns &lt;
+&lt;(dig peeweeharms.hk)</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Numerically
+sort the IP addresses in the output of <b>dig</b>.</p>
+
+<h2>LONG EXAMPLE
+<a name="LONG EXAMPLE"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>1 <br>
+seq 0 1000</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>|</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>xargs -I{}
+bash -c &quot;echo {{}} &gt; {}&quot;</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>2 <br>
+seq 0 1000</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>|</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>awk
+&rsquo;{printf &quot;mv %s topsecret_%s.json\n&quot;, $0,
+$0}&rsquo;</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>|</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>3 <br>
+parallel</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>4 <br>
+paste &lt;(seq 0 1000) &lt;(hns &lt; &lt;(echo
+topsecret_[[:digit:]]*.json))</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>|</b></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>awk
+&rsquo;{mv %s topsecret_%04d.json\n&quot;, $2, $1}&rsquo; |
+parallel</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Use as part of
+a pipeline to fix accidentally unzeropadded numbers :-)</p>
+
+<p style="margin-left:11%; margin-top: 1em">&darr;</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p><b>1</b></p></td>
+<td width="10%"></td>
+<td width="78%">
+
+
+<p>write some top secret JSON-format files as 0..=1000</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p><b>2</b></p></td>
+<td width="10%"></td>
+<td width="78%">
+
+
+<p>move them to .json file extensions</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p><b>3</b></p></td>
+<td width="10%"></td>
+<td width="78%">
+
+
+<p>oops! forgot to zeropad!! managing these files will suck
+now :-(</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p><b>4</b></p></td>
+<td width="10%"></td>
+<td width="78%">
+
+
+<p>luckily we have <b>hns</b>!</p></td></tr>
+</table>
+
+<h2>SYMLINKS
+<a name="SYMLINKS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">When run as
+<b>hns+</b>, negative numbers are not considered. This is
+ever so slightly faster. When run as <b>hxs</b>, hexadecimal
+numbers are sorted appropriately (but &quot;negative
+hexadecimals&quot;, a seemingly? useless concept,
+ignored).</p>
+
+<h2>REPOSITORY
+<a name="REPOSITORY"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><a href="https://github.com/ctrlcctrlv/humnumsort">https://github.com/ctrlcctrlv/humnumsort</a></p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><a href="mailto:copypaste@kittens.ph">Fredrick
+Brennan</a>, <b>humnumsort</b> Project Authors</p>
+<hr>
 </body>
 </html>

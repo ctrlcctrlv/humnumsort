@@ -2,7 +2,8 @@
 members = [
     "lib",
     "bin",
-    "xtask_mangen"
+    "xtask_mangen",
+    "xtask_symlink"
 ]
 
 default-members = ["bin"]

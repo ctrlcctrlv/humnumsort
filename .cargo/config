@@ -1,0 +1,2 @@
+[alias]
+xtask_symlink = "run --package xtask_symlink --"

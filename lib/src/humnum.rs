@@ -1,4 +1,4 @@
-use atoi::{FromRadix10, FromRadix10Signed};
+use atoi::{FromRadix10, FromRadix10Signed, FromRadix16};
 #[cfg(debug_assertions)]
 use log::debug;
 
@@ -88,7 +88,8 @@ impl HumanNumericLine<'_> {
 
         // Possible bailout: if we don't really have a number. Attempt a regular match,
         // and...
-        if !a[anbeg].is_ascii_digit() || !b[bnbeg].is_ascii_digit() {
+        if self.mode.consider_hex() && (!a[anbeg].is_ascii_hexdigit() || !b[bnbeg].is_ascii_hexdigit())
+            || (!a[anbeg].is_ascii_digit() || !b[bnbeg].is_ascii_digit()) {
             let axbeg = xbeg(a);
             let axfin = xfin(a);
             let bxbeg = xbeg(b);
@@ -125,16 +126,23 @@ impl HumanNumericLine<'_> {
         debug!("{:?}", (an, anbeg, anfin, bn, bnbeg, bnfin));
 
         // Finally, do a normal comparison on the numbers.
-        let (ai, bi): (i64, i64) = if self.mode.is_default() {
+        let (ai, bi): (i64, i64) = if self.mode.sort_negatives() {
             (
                 FromRadix10Signed::from_radix_10_signed(an).0,
                 FromRadix10Signed::from_radix_10_signed(bn).0
             )
         } else {
-            (
-                FromRadix10::from_radix_10(an).0,
-                FromRadix10::from_radix_10(bn).0
-            )
+            if self.mode.consider_hex() {
+                (
+                    FromRadix16::from_radix_16(an).0,
+                    FromRadix16::from_radix_16(bn).0
+                )
+            } else {
+                (
+                    FromRadix10::from_radix_10(an).0,
+                    FromRadix10::from_radix_10(bn).0
+                )
+            }
         };
 
         let cmp = ai.cmp(&bi);

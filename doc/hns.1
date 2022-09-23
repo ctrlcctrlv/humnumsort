@@ -1,14 +1,21 @@
-.\" generated with Ronn-NG/v0.9.1
-.\" http://github.com/apjanke/ronn-ng/tree/0.9.1
 .TH "HNS" "1" "September 2022" ""
 .SH "NAME"
 \fBhns\fR \- human numeric sort
 .SH "SYNOPSIS"
-hns < input > output
-.P
-hns < <(…) > output
-.P
-… | hns > output
+.SY
+hns
+.B "< input"
+.OP "> output"
+.SY
+hns
+.B "< <(...)" 
+.OP "> output"
+.SY
+\&... | hns
+.OP "> output"
+.YS
+.SS Note:
+The name of the command varies \(em there are also \fBhns+\fR and \fBhxs\fR. See SYMLINKS.
 .SH "DESCRIPTION"
 A "human numeric" sorting program \(em does what \fBsort \-h\fR is supposed to do!
 .P
@@ -68,5 +75,14 @@ oops! forgot to zeropad!! managing these files will suck now :\-(
 .TP
 \fB4\fR
 luckily we have \fBhns\fR!
+.SH "SYMLINKS"
+When run as \fBhns+\fR, negative numbers are not considered. This is ever so slightly faster. When run as \fBhxs\fR, hexadecimal numbers are sorted appropriately (but "negative hexadecimals", a seemingly? useless concept, ignored).
+.SH "REPOSITORY"
+.P
+.UR https://github\.com/ctrlcctrlv/humnumsort
+.UE
 .SH "AUTHORS"
-Fredrick Brennan \fIcopypaste@kittens\.ph\fR, \fBhumnumsort\fR Project Authors
+.MT copypaste@kittens\.ph
+Fredrick Brennan
+.ME ,
+\fBhumnumsort\fR Project Authors
