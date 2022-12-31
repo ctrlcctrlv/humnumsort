@@ -9,6 +9,22 @@
 * [`hns_0.1.1_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.1.1/hns_0.1.1_amd64.deb)
 * [`humnumsort.PKGBUILD` (for Arch Linux)](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=humnumsort)
 
+### Or if you have a Rust toolchain, install via Rust's package manager, `cargo`:
+
+* `cargo install hns`
+
+<div align="center">
+  <a href="https://docs.rs/humnum">
+    <img src="https://docs.rs/humnum/badge.svg" alt="Documentation">
+  </a>
+  <a href="https://crates.io/crates/hns">
+    <img src="https://img.shields.io/crates/v/hns.svg" alt="Version">
+  </a>
+  <a href="https://github.com/ctrlcctrlv/humnumsort/blob/main/LICENSE">
+    <img src="https://img.shields.io/crates/l/hns.svg" alt="License">
+  </a>
+</div>
+
 ## Commercial
 
 **Has this ever happened to you?**
