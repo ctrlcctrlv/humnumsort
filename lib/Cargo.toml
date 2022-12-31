@@ -8,7 +8,7 @@ repository = "https://github.com/ctrlcctrlv/humnumsort"
 license = "Apache-2.0"
 categories = ["command-line-utilities", "text-processing", "algorithms"]
 authors = ["Fredrick Brennan <copypaste@kittens.ph>", "`humnumsort` Project Authors"]
-keywords = ["sorting", "coreutils", "numeric-sorting", "human-numeric-sort", "stdin", "stdout"]
+keywords = ["coreutils", "numeric-sorting", "human-numeric-sort", "stdin", "stdout"]
 
 [lib]
 name = "humnum"
