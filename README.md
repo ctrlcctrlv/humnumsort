@@ -6,7 +6,8 @@
 
 ## Packages
 
-* [`hns_0.1.1_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.1.1/hns_0.1.1_amd64.deb)
+* [`hns_0.2.0_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.2.0/hns_0.2.0_amd64.deb)
+* [`hns-0.2.0-1.x86_64.rpm` (for Fedora, CentOS _n_, Red Hat Linux, etc.](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.2.0/hns-0.2.0-1.x86_64.rpm)
 * [`humnumsort.PKGBUILD` (for Arch Linux)](dist/aur/PKGBUILD)
 
 ### Or if you have a Rust toolchain, install via Rust's package manager, `cargo`:
