@@ -202,10 +202,10 @@ Sixteen million lines with four comparison points each sorted in under thirty se
 
 * See [`humnumsort-test-data` repository](https://github.com/ctrlcctrlv/humnumsort-test-data/).
 
-    You may want to pull it as:
+    You may want to clone it as:
 
     ```bash
-    $ git pull https://github.com/ctrlcctrlv/humnumsort-test-data/ tests/data/expensive
+    $ git clone https://github.com/ctrlcctrlv/humnumsort-test-data/ tests/data/expensive
     ```
 
 ## TODO
