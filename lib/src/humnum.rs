@@ -68,17 +68,18 @@ impl HumanNumericLine<'_> {
 
         // Second, we define a bunch of closures which will calculate indices into the buffers.
         type BytesIter<'a> = &'a mut dyn std::iter::Iterator<Item = &'a u8>;
-        let take_digits = |i: &usize, a: BytesIter| a.nth(*i).unwrap_or(&('\0' as u8)).is_ascii_digit();
+        let take_digits =
+            move |i: &usize, a: BytesIter| a.nth(*i).unwrap_or(&('\0' as u8)).is_ascii_digit();
         type IndexIter<'a> = &'a mut dyn std::iter::Iterator<Item = usize>;
         type RangeClbk<'a> = &'a dyn Fn(&usize) -> bool;
-        let nrange = |r: IndexIter, f: RangeClbk| r.take_while(f).last().unwrap_or(neqi);
+        let nrange = move |r: IndexIter, f: RangeClbk| r.take_while(f).last().unwrap_or(neqi);
 
-        let begr = || (0..neqi).rev();
-        let finr = |buf: &[u8]| (neqi..buf.len());
-        let nbeg = |buf: &[u8]| nrange(&mut begr(), &|i| take_digits(i, &mut buf.into_iter()));
-        let nfin = |buf: &[u8]| nrange(&mut finr(buf), &|i| take_digits(i, &mut buf.into_iter()));
-        let xbeg = |buf: &[u8]| nrange(&mut begr(), &|i| !take_digits(i, &mut buf.into_iter()));
-        let xfin = |buf: &[u8]| nrange(&mut finr(buf), &|i| !take_digits(i, &mut buf.into_iter()));
+        let begr = move || (0..neqi).rev();
+        let finr = move |buf: &[u8]| (neqi..buf.len());
+        let nbeg = move |buf: &[u8]| nrange(&mut begr(), &|i| take_digits(i, &mut buf.into_iter()));
+        let nfin = move |buf: &[u8]| nrange(&mut finr(buf), &|i| take_digits(i, &mut buf.into_iter()));
+        let xbeg = move |buf: &[u8]| nrange(&mut begr(), &|i| !take_digits(i, &mut buf.into_iter()));
+        let xfin = move |buf: &[u8]| nrange(&mut finr(buf), &|i| !take_digits(i, &mut buf.into_iter()));
 
         // Third, using our ≠ index, we figure out boundaries of ASCII numbers.
         let anbeg = nbeg(a);

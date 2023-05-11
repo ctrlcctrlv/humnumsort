@@ -1,4 +1,4 @@
-use std::io::{self, Read as _, Write as _};
+use std::io::{stdin, stdout, BufWriter, Error, ErrorKind, Read as _, Write as _};
 use std::time::Instant;
 
 use env_logger;
@@ -9,19 +9,19 @@ use log::{error, info, warn};
 use humnum::HumanNumericLine;
 use humnum::Options;
 
-fn main() {
+fn main() -> Result<(), Error> {
     let args: Options = Options::new();
     let now = Instant::now();
     env_logger::init();
-    let mut out = io::stdout().lock();
+    let mut out = BufWriter::new(stdout().lock());
     let mut stdinbuf = vec![];
     {
-        let mut lines = io::stdin().lock();
+        let mut lines = stdin().lock();
         let res = lines.read_to_end(&mut stdinbuf);
         if let Err(e) = res {
             let ek = e.kind();
             match ek {
-                io::ErrorKind::UnexpectedEof => warn!("Got EOF we didn't anticipate"),
+                ErrorKind::UnexpectedEof => warn!("Got EOF we didn't anticipate"),
                 _ => error!("Got unexpected I/O error: {:?}", e),
             }
         }
@@ -55,5 +55,11 @@ fn main() {
             break;
         }
     }
-    info!("Writing done; wrote in {0:.4}µs", now.elapsed().as_micros());
+    if let Err(e) = out.flush() {
+        error!("Failed to write to (flush) stdout! {:?}", e);
+        Err(e)
+    } else {
+        info!("Writing done; wrote in {0:.4}µs", now.elapsed().as_micros());
+        Ok(())
+    }
 }

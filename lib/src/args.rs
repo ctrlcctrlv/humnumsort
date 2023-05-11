@@ -62,6 +62,7 @@ const USAGE_HXS: &str = usage!(HXS);
     long_about = LONG_ABOUT
 )]
 #[clap(subcommand_required(true))]
+#[repr(C)]
 pub enum Mode {
     #[clap(author, version, about = ABOUT, after_long_help = "\n", long_about = LONG_ABOUT)]
     #[clap(name = HNS, bin_name = HNS)]
@@ -78,21 +79,24 @@ pub enum Mode {
 }
 
 impl Mode {
-    pub fn consider_hex(&self) -> bool {
+    #[inline]
+    pub const fn consider_hex(&self) -> bool {
         match self {
             Mode::Hexadecimal(_) => true,
-            _ => false
+            _ => false,
         }
     }
-    pub fn sort_negatives(&self) -> bool {
+    #[inline]
+    pub const fn sort_negatives(&self) -> bool {
         match self {
             Mode::Default(_) | Mode::Hexadecimal(_) => true,
-            _ => false
+            _ => false,
         }
     }
 }
 
 impl Default for Mode {
+    #[inline]
     fn default() -> Self {
         Self::Default(Default::default())
     }
@@ -109,6 +113,7 @@ macro_rules! examples {
             #[derive(Debug, Copy, Clone, Parser, PartialEq, Eq, Default)]
             #[clap(subcommand_help_heading(EXAMPLES))]
             #[clap(setting(clap::AppSettings::DeriveDisplayOrder))]
+            #[repr(C)]
             pub struct ExampleContainer {
                 #[clap(subcommand)]
                 examples: Option<Examples>
@@ -116,6 +121,7 @@ macro_rules! examples {
 
             #[derive(Copy, Clone, Debug, Parser, PartialEq, Eq, Default)]
             #[clap(next_line_help(true))]
+            #[repr(C)]
             pub enum Examples {
                 #[default]
                 #[clap(name = formatcp!("find . | {}", $const))]
