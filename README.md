@@ -7,7 +7,7 @@
 ## Packages
 
 * [`hns_0.1.1_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.1.1/hns_0.1.1_amd64.deb)
-* [`humnumsort.PKGBUILD` (for Arch Linux)](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=humnumsort)
+* [`humnumsort.PKGBUILD` (for Arch Linux)](dist/aur/PKGBUILD)
 
 ### Or if you have a Rust toolchain, install via Rust's package manager, `cargo`:
 
