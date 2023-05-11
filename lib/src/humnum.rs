@@ -10,9 +10,9 @@ use std::str::{from_utf8, from_utf8_unchecked};
 use crate::args::Mode;
 
 #[derive(Constructor, Copy, Clone)]
-pub struct HumanNumericLine<'a>{
+pub struct HumanNumericLine<'a> {
     pub buf: &'a [u8],
-    pub mode: Mode
+    pub mode: Mode,
 }
 
 impl Debug for HumanNumericLine<'_> {
@@ -90,7 +90,8 @@ impl HumanNumericLine<'_> {
         // Possible bailout: if we don't really have a number. Attempt a regular match,
         // and...
         if self.mode.consider_hex() && (!a[anbeg].is_ascii_hexdigit() || !b[bnbeg].is_ascii_hexdigit())
-            || (!a[anbeg].is_ascii_digit() || !b[bnbeg].is_ascii_digit()) {
+            || (!a[anbeg].is_ascii_digit() || !b[bnbeg].is_ascii_digit())
+        {
             let axbeg = xbeg(a);
             let axfin = xfin(a);
             let bxbeg = xbeg(b);
@@ -110,7 +111,7 @@ impl HumanNumericLine<'_> {
 
         // This makes the below parse unwrap safe by discarding final \n
         let subrange = |buf: &[u8], mut beg: usize, fin: usize| {
-            if self.mode.is_default() && beg >= 1 && buf[beg-1] == '-' as u8 {
+            if self.mode.is_default() && beg >= 1 && buf[beg - 1] == '-' as u8 {
                 beg -= 1;
             }
             if fin != buf.len() - 1 {
@@ -130,19 +131,13 @@ impl HumanNumericLine<'_> {
         let (ai, bi): (i64, i64) = if self.mode.sort_negatives() {
             (
                 FromRadix10Signed::from_radix_10_signed(an).0,
-                FromRadix10Signed::from_radix_10_signed(bn).0
+                FromRadix10Signed::from_radix_10_signed(bn).0,
             )
         } else {
             if self.mode.consider_hex() {
-                (
-                    FromRadix16::from_radix_16(an).0,
-                    FromRadix16::from_radix_16(bn).0
-                )
+                (FromRadix16::from_radix_16(an).0, FromRadix16::from_radix_16(bn).0)
             } else {
-                (
-                    FromRadix10::from_radix_10(an).0,
-                    FromRadix10::from_radix_10(bn).0
-                )
+                (FromRadix10::from_radix_10(an).0, FromRadix10::from_radix_10(bn).0)
             }
         };
 
@@ -151,7 +146,8 @@ impl HumanNumericLine<'_> {
             cmp
         } else {
             // Recurse on rest of line if numbers equal.
-            HumanNumericLine::new(&a[anfin + 1..], self.mode).humnum_compare(&HumanNumericLine::new(&b[bnfin + 1..], self.mode))
+            HumanNumericLine::new(&a[anfin + 1..], self.mode)
+                .humnum_compare(&HumanNumericLine::new(&b[bnfin + 1..], self.mode))
         }
     }
 }

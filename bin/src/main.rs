@@ -34,8 +34,10 @@ fn main() -> Result<(), Error> {
     );
     let now = Instant::now();
     let sorted_refs = {
-        let mut unsorted_refs: Vec<HumanNumericLine> =
-            unsorted.into_iter().map(|l| HumanNumericLine::new(l, args.mode)).collect();
+        let mut unsorted_refs: Vec<HumanNumericLine> = unsorted
+            .into_iter()
+            .map(|l| HumanNumericLine::new(l, args.mode))
+            .collect();
         // Strangely, for my tested data, this is significantly faster than .sort_unstable()
         unsorted_refs.sort();
         unsorted_refs

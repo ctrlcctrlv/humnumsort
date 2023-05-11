@@ -2,7 +2,9 @@ use clap;
 use humnum;
 
 fn main() -> std::io::Result<()> {
-    let out_dir = std::path::PathBuf::from(std::env::var_os("OUT_DIR").ok_or_else(|| std::io::ErrorKind::NotFound)?);
+    let out_dir = std::path::PathBuf::from(
+        std::env::var_os("OUT_DIR").ok_or_else(|| std::io::ErrorKind::NotFound)?,
+    );
 
     let cmd = <humnum::Options as clap::CommandFactory>::command();
 

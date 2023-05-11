@@ -14,10 +14,11 @@ impl Options {
         let p = Self::try_parse();
         let r = match p {
             Ok(o) => o,
-            Err(clap::Error{ kind: clap::ErrorKind::DisplayHelp, .. }) => {
-                Self::parse()
-            },
-            Err(clap::Error{ .. }) => Default::default()
+            Err(clap::Error {
+                kind: clap::ErrorKind::DisplayHelp,
+                ..
+            }) => Self::parse(),
+            Err(clap::Error { .. }) => Default::default(),
         };
         r
     }
