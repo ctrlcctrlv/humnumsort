@@ -4,8 +4,8 @@
 
 pkgname=humnumsort
 _pkgname=hns
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Human-sorts lines (i.e. x10\n comes after x1\n)'
 provides=('hns' 'hns+' 'hxs')
 makedepends=('cargo')
@@ -13,7 +13,7 @@ arch=('x86_64' 'armv6h' 'armv7h')
 license=('Apache-2.0')
 url='https://github.com/ctrlcctrlv/humnumsort'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fa4490ac64035fac0c9f60f2af3413a548e20aebe1e53214d5084587ea2e11e2')
+sha256sums=('5052b506ce892209f1832931f603f63d07f55dddb29ef7813f6a99d419c7590b')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/bin"
@@ -22,11 +22,13 @@ build() {
 	cargo build --frozen --release
 }
 
-check() {
-	cd "${srcdir}/${pkgname}-${pkgver}/bin"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen
-}
+# `hns` pkg has manual tests via humnumsort_test_data so this is a wasted
+# recompile for now.
+#check() {
+#	cd "${srcdir}/${pkgname}-${pkgver}/bin"
+#	export RUSTUP_TOOLCHAIN=stable
+#	cargo test --frozen
+#}
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/bin"
