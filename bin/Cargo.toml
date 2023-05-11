@@ -29,3 +29,11 @@ section = "Utilities"
 
 [features]
 force_color = ["humnum/force_color"]
+
+[package.metadata.generate-rpm]
+assets = [
+    { source = "../target/release/hns", dest = "/usr/bin/hns", mode = "755" },
+    { source = "../target/release/hns", dest = "/usr/bin/hns+", mode = "755" },
+    { source = "../target/release/hns", dest = "/usr/bin/hxs", mode = "755" },
+    { source = "../doc/hns.1.gz", dest = "/usr/share/man/man1/", mode = "644" },
+]
