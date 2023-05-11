@@ -1,6 +1,6 @@
-# `hns` — *H*uman *N*umeric *S*ort v0.1.0 (⏫︎2022-09-20)
+# `hns` — *H*uman *N*umeric *S*ort v0.2.0 (⏫︎2023-05-11)
 
-* © 2022 Fredrick R. Brennan and `hns` Authors
+* © 2022–2023 Fredrick R. Brennan and `hns` Authors
     * Apache 2.0 licensed, see LICENSE.  
 * [**`man` page**](http://copypaste.wtf/humnumsort/doc/hns.1.html)
 
