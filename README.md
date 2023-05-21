@@ -1,4 +1,4 @@
-# `hns` — *H*uman *N*umeric *S*ort v0.2.0 (⏫︎2023-05-11)
+# `hns` — *H*uman *N*umeric *S*ort v0.3.0 (⏫︎2023-05-21)
 
 * © 2022–2023 Fredrick R. Brennan and `hns` Authors
     * Apache 2.0 licensed, see LICENSE.  
@@ -6,8 +6,8 @@
 
 ## Packages
 
-* [`hns_0.2.0_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.2.0/hns_0.2.0_amd64.deb)
-* [`hns-0.2.0-1.x86_64.rpm` (for Fedora, CentOS _n_, Red Hat Linux, etc.](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.2.0/hns-0.2.0-1.x86_64.rpm)
+* [`hns_0.3.0_amd64.deb` (for Debian, Ubuntu, Pop! OS, etc.)](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.3.0/hns_0.3.0_amd64.deb)
+* [`hns-0.3.0-1.x86_64.rpm` (for Fedora, CentOS _n_, Red Hat Linux, etc.](https://github.com/ctrlcctrlv/humnumsort/releases/download/v0.3.0/hns-0.3.0-1.x86_64.rpm)
 * [`humnumsort.PKGBUILD` (for Arch Linux)](dist/aur/PKGBUILD)
 
 ### Or if you have a Rust toolchain, install via Rust's package manager, `cargo`:
