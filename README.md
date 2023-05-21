@@ -199,6 +199,24 @@ sys     0m1.548s
 
 Sixteen million lines with four comparison points each sorted in under thirty seconds! And that's a Freddy Mays guarantee.
 
+## Changelog
+
+### v0.3.0 (2023-05-21)
+
+- +`-C` flag (case insensitive sort)
+
+### v0.2.0 (2023-05-11)
+
+- 30x faster
+
+### v0.1.1 (2022-09-22)
+
+- hexadecimal mode
+
+### v0.1.0 (2022-09-21)
+
+- initial release
+
 ## Benchmarking data
 
 * See [`humnumsort-test-data` repository](https://github.com/ctrlcctrlv/humnumsort-test-data/).
