@@ -1,6 +1,6 @@
 [package]
 name = "hns"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 readme = "README.md"
 description = "Human numeric sorting program — does what `sort -h` is supposed to do!"
@@ -13,7 +13,7 @@ keywords = ["coreutils", "numeric-sorting", "human-numeric-sort", "stdin", "stdo
 [dependencies]
 log = "0.4"
 env_logger = "0.9"
-humnum = { version = ">=0", path = "../lib" }
+humnum = { version = ">=0.3", path = "../lib" }
 
 [package.metadata.deb]
 assets = [

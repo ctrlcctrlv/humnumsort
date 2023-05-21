@@ -68,15 +68,15 @@ pub enum Mode {
     #[clap(author, version, about = ABOUT, after_long_help = "\n", long_about = LONG_ABOUT)]
     #[clap(name = HNS, bin_name = HNS)]
     #[clap(override_usage(USAGE_HNS))]
-    Default(hns::ExampleContainer),
+    Default(hns::Args),
     #[clap(author, version, about = about_nn!(ABOUT), after_long_help = "\n", long_about = about_nn!(LONG_ABOUT))]
     #[clap(name = HNS_NN, bin_name = HNS_NN)]
     #[clap(override_usage(USAGE_HNSNN))]
-    NoNegatives(hnsnn::ExampleContainer),
+    NoNegatives(hnsnn::Args),
     #[clap(author, version, about = about_x!(ABOUT), after_long_help = "\n", long_about = LONG_ABOUT)]
     #[clap(name = HXS, bin_name = HXS)]
     #[clap(override_usage(USAGE_HXS))]
-    Hexadecimal(hxs::ExampleContainer),
+    Hexadecimal(hxs::Args),
 }
 
 impl Mode {
@@ -92,6 +92,14 @@ impl Mode {
         match self {
             Mode::Default(_) | Mode::Hexadecimal(_) => true,
             _ => false,
+        }
+    }
+    #[inline]
+    pub const fn insensitive(&self) -> bool {
+        match self {
+            Mode::Default(a) => a.insensitive,
+            Mode::Hexadecimal(a) => a.insensitive,
+            Mode::NoNegatives(a) => a.insensitive
         }
     }
 }
@@ -115,15 +123,19 @@ macro_rules! examples {
             #[clap(subcommand_help_heading(EXAMPLES))]
             #[clap(setting(clap::AppSettings::DeriveDisplayOrder))]
             #[repr(C)]
-            pub struct ExampleContainer {
+            pub struct Args {
+                #[clap(short = 'C', long = "insensitive", help = "Case insensitive?")]
+                pub insensitive: bool,
+
+                /// This is a documentation-only “subcommand”.
                 #[clap(subcommand)]
-                examples: Option<Examples>
+                examples: Option<Examples>,
             }
 
             #[derive(Copy, Clone, Debug, Parser, PartialEq, Eq, Default)]
             #[clap(next_line_help(true))]
             #[repr(C)]
-            pub enum Examples {
+            enum Examples {
                 #[default]
                 #[clap(name = formatcp!("find . | {}", $const))]
                 #[clap(about = "Numerically sort the names of the files in the current directory.\n")]

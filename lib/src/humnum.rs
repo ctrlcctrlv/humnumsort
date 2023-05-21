@@ -96,9 +96,23 @@ impl HumanNumericLine<'_> {
             let axfin = xfin(a);
             let bxbeg = xbeg(b);
             let bxfin = xfin(b);
+            let mut axs: String;
+            let mut bxs: String;
             let ax = &a[axbeg..=axfin];
             let bx = &b[bxbeg..=bxfin];
-            let cmp = ax.cmp(bx);
+            let cmp;
+            // ...after we check the case sensitivity option...
+            if self.mode.insensitive() {
+                axs = String::with_capacity(ax.len());
+                bxs = String::with_capacity(bx.len());
+                unsafe {
+                    axs.push_str(from_utf8_unchecked(ax).to_lowercase().as_str());
+                    bxs.push_str(from_utf8_unchecked(bx).to_lowercase().as_str());
+                }
+                cmp = axs.cmp(&bxs);
+            } else {
+                cmp = ax.cmp(bx);
+            }
             if cmp != Ordering::Equal {
                 // ...return it if it is not equal, otherwise...
                 return cmp;
