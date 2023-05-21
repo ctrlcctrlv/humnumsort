@@ -21,6 +21,8 @@ assets = [
     ["target/release/hns", "usr/bin/hns+", "755"],
     ["target/release/hns", "usr/bin/hxs", "755"],
     ["../doc/hns.1.gz", "usr/share/man/man1/hns.1.gz", "644"],
+    ["../doc/hns.1.gz", "usr/share/man/man1/hns+.1.gz", "644"],
+    ["../doc/hns.1.gz", "usr/share/man/man1/hxs.1.gz", "644"],
     ["../README.md", "usr/share/doc/hns/readme", "644"],
     ["../doc/hns.1.html", "usr/share/doc/hns/manpage.html", "644"]
 ]
@@ -36,4 +38,8 @@ assets = [
     { source = "../target/release/hns", dest = "/usr/bin/hns+", mode = "755" },
     { source = "../target/release/hns", dest = "/usr/bin/hxs", mode = "755" },
     { source = "../doc/hns.1.gz", dest = "/usr/share/man/man1/", mode = "644" },
+    { source = "../doc/hns.1.gz", dest = "/usr/share/man/man1/hns+.1.gz", mode = "644" },
+    { source = "../doc/hns.1.gz", dest = "/usr/share/man/man1/hxs.1.gz", mode = "644" },
+    { source = "../README.md", dest = "/usr/share/doc/hns/readme", mode = "644" },
+    { source = "../doc/hns.1.html", dest = "/usr/share/doc/hns/manpage.html", mode = "644" },
 ]
